@@ -14,7 +14,11 @@ figure; hold on;
 
 
 
-
+getdata=load('ex2data1.txt');
+a=find(getdata(:,3)==1);
+b=find(getdata(:,3)==0);
+plot(getdata(a,1), getdata(a,2), 'k+', 'LineWidth', 2, 'MarkerSize', 7);
+plot(getdata(b,1), getdata(b,2), 'ko', 'MarkerFaceColor', 'y', 'MarkerSize', 7);
 
 
 
