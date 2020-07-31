@@ -18,7 +18,10 @@ for iter = 1:num_iters
     %
 
 
-
+    h=X*theta;
+    total=sum((h-y).*X);
+    total=total*alpha/m;
+    theta=theta-total';
 
 
 
