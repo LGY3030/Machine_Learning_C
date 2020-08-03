@@ -22,7 +22,11 @@ p = zeros(size(X, 1), 1);
 %
 
 
-
+X = [ones(m, 1) X];
+a = sigmoid(Theta1*X');
+a = [ones(1, m);a];
+b = sigmoid(Theta2*a);
+[large,p] = max(b',[],2);
 
 
 
