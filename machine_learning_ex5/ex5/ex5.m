@@ -133,6 +133,7 @@ pause;
 p = 8;
 
 % Map X onto Polynomial Features and Normalize
+
 X_poly = polyFeatures(X, p);
 [X_poly, mu, sigma] = featureNormalize(X_poly);  % Normalize
 X_poly = [ones(m, 1), X_poly];                   % Add Ones
