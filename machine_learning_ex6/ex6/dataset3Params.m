@@ -22,10 +22,26 @@ sigma = 0.3;
 %  Note: You can compute the prediction error using 
 %        mean(double(predictions ~= yval))
 %
+find_C = [0.01;0.03;0.1;0.3;1;3;10;30];
+find_sigma = [0.01;0.03;0.1;0.3;1;3;10;30];
+final_C = 0;
+final_sigma = 0;
+predict = 100;
+for i = 1:8,
+	for j = 1:8,
+		model= svmTrain(X, y, find_C(i), @(x1, x2) gaussianKernel(x1, x2, find_sigma(j))); 
+		pred = svmPredict(model, Xval);
+		get = mean(double(pred ~= yval));
+		if get<predict,
+			final_C = find_C(i);
+			final_sigma = find_sigma(j);
+			predict = get;
+		end;
+	end;
+end;
 
-
-
-
+C = final_C;
+sigma = final_sigma;
 
 
 
